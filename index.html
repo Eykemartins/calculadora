@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(255, 255, 255);
+        padding: 20px 0 0 0;
+    }
+
+    .calculadora {
+        border-radius: 40px;
+        background-color: rgb(0, 40, 66);
+        width: 100%;
+        max-width: 300px;
+        height: 400px;
+        margin: 0 auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+    }
+
+    .valor {
+        border-radius: 40px;
+        width: 100%;
+        height: 50px;
+        background-color: aliceblue;
+        border: 2px solid black;
+        text-align: right;
+        line-height: 50px;
+        font-size: 1.5rem;
+        padding-right: 5px;
+        color: rgb(0, 25, 53);
+        font-weight: 700;
+
+    }
+
+    .cont__button {
+        border-radius: 40px;
+        width: 100%;
+        height: 320px;
+        background-color: rgb(2, 19, 56);
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+
+
+
+    }
+
+    .btn {
+        border-radius: 40px;
+        width: 60px;
+        height: 50px;
+        border: 1px solid rgb(22, 0, 41);
+        font-size: 1.5rem;
+        background-color: rgb(0, 37, 80);
+        color: rgba(0, 0, 0, 0.575);
+        transition: .4s;
+    }
+
+    .btn:hover {
+        width: 60px;
+        height: 50px;
+        border: 1px solid rgb(255, 255, 255);
+        font-size: 1.5rem;
+        background-color: rgb(0, 97, 189);
+        color: rgb(255, 255, 255);
+        box-shadow: 1px 5px 16px rgb(255, 255, 255);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="calculadora">
+            <p class="valor"></p>
+            <div class="cont__button">
+                <button class="btn" onclick="claer()">C</button>
+                <button class="btn" onclick="back()">
+                    < </button>
+                        <button class="btn" onclick="add('*')">X</button>
+                        <button class="btn" onclick="add('/')">/</button>
+                        <button class="btn" onclick="add('1')">1</button>
+                        <button class="btn" onclick="add('2')">2</button>
+
+                        <button class="btn" onclick="add('3')">3</button>
+
+                        <button class="btn" onclick="add('-')">-</button>
+
+                        <button class="btn" onclick="add('4')">4</button>
+                        <button class="btn" onclick="add('5')">5</button>
+                        <button class="btn" onclick="add('6')">6</button>
+                        <button class="btn" onclick="add('+')">+</button>
+                        <button class="btn" onclick="add('7')">7</button>
+                        <button class="btn" onclick="add('8')">8</button>
+                        <button class="btn" onclick="add('9')">9</button>
+                        <button class="btn" onclick="add('0')">0</button>
+
+                        <button class="btn" onclick="calcular()">=</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        let valor = document.querySelector(".valor");
+
+
+        function add(numero) {
+            var num = document.querySelector(".valor").innerHTML
+
+            document.querySelector(".valor").innerHTML = num += numero;
+
+        }
+
+        function claer(){
+            document.querySelector(".valor").innerHTML = ""
+        }
+
+        function back(){
+            var resultado = document.querySelector(".valor").innerHTML
+            document.querySelector(".valor").innerHTML = resultado.substring(0,resultado.length -1)
+        }
+
+
+        function calcular(){
+            var resultado = document.querySelector(".valor").innerHTML
+
+            if(resultado){
+                document.querySelector(".valor").innerHTML = eval(resultado);
+            }else{
+                alert("valor invalido!")
+            }
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
